@@ -28,6 +28,13 @@ def clientes(request):
         )
 
         # salvando no banco
-        clientes.save()
+        #clientes.save()
 
+        # conhecendo o arquivo zip
+       # x = list(zip(carros, placas, ano))
+       # print(x)
+
+        for carro, placa, ano in zip(carros, placas, ano):
+            car = Carro(carro = carro, placa=placa, ano = ano, cliente = clientes)
+            print(carro, placa, ano)
         return HttpResponse('Hello World!')
