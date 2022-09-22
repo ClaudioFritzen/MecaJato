@@ -2,6 +2,8 @@ import re
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from .models import Clientes, Carro
+
 # Create your views here.
 def clientes(request):
     if request.method == "GET":
@@ -16,6 +18,16 @@ def clientes(request):
         carros = request.POST.getlist('carro')
         placas = request.POST.getlist('placa')
         ano = request.POST.getlist('ano')
-        print(carros)
-        print(placas)
-        print(ano)
+        
+        #pegando os dados que gostaria de salvar no banco
+        cliente = Clientes(
+            nome = nome,
+            sobrenome = sobrenome,
+            email = email,
+            cpf = cpf
+        )
+
+        # salvando no banco
+        clientes.save()
+
+        return HttpResponse('Hello World!')
