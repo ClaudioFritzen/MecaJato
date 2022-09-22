@@ -11,3 +11,8 @@ class Clientes(models.Model):
 
     def __str__(self) -> str:
         return self.nome
+
+class Carro(models.Model):
+    carros = models.CharField(max_length=20)
+    placas = models.CharField(max_length=20)
+    ano = models.CharField(max_length=10)
