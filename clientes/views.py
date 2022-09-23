@@ -18,6 +18,12 @@ def clientes(request):
         carros = request.POST.getlist('carro')
         placas = request.POST.getlist('placa')
         ano = request.POST.getlist('ano')
+
+        # Criando a validação para cpf
+        cliente = Clientes.objects.filter(cpf = cpf)
+
+        if cliente.exists():
+            return HttpResponse('Cliente já existe')
         
         #pegando os dados que gostaria de salvar no banco
         cliente = Clientes(
