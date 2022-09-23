@@ -8,6 +8,7 @@ from .models import Clientes, Carro
 def clientes(request):
     if request.method == "GET":
         return render(request, 'clientes.html')
+
     elif request.method == "POST":
         nome = request.POST.get('nome')
         sobrenome = request.POST.get('sobrenome')
@@ -23,12 +24,14 @@ def clientes(request):
         cliente = Clientes.objects.filter(cpf = cpf)
 
         if cliente.exists():
-            return render(request, 'clientes.html', {'nome': nome, 'sobrenome': sobrenome, 'email': email})
+           return render(request, 'clientes.html', {'nome': nome, 'sobrenome': sobrenome, 'email': email})
+           #return HttpResponse('Cliente já existe')
         
         # validação de email
         if not re.fullmatch(re.compile(r'([A-Za-Z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+'), email):
             return render(request, {'nome': nome, 'sobrenome': sobrenome, 'cpf':cpf})
-        
+            #return HttpResponse('email inválido')
+                
         
         #pegando os dados que gostaria de salvar no banco
         cliente = Clientes(
