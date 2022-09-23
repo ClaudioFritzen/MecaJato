@@ -24,12 +24,13 @@ def clientes(request):
         cliente = Clientes.objects.filter(cpf = cpf)
 
         if cliente.exists():
-           return render(request, 'clientes.html', {'nome': nome, 'sobrenome': sobrenome, 'email': email})
+           return render(request, 'clientes.html', {'nome': nome, 'sobrenome': sobrenome, 'email': email, 'carros': zip(carros, placas, ano)})
            #return HttpResponse('Cliente já existe')
         
         # validação de email
-        if not re.fullmatch(re.compile(r'([A-Za-Z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+'), email):
-            return render(request, {'nome': nome, 'sobrenome': sobrenome, 'cpf':cpf})
+        
+        if not re.fullmatch(re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+'), email):
+            return render(request, {'nome': nome, 'sobrenome': sobrenome, 'cpf': cpf, 'carros': zip(carros, placas, ano)})
             #return HttpResponse('email inválido')
                 
         
