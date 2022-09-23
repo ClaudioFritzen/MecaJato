@@ -23,11 +23,11 @@ def clientes(request):
         cliente = Clientes.objects.filter(cpf = cpf)
 
         if cliente.exists():
-            return HttpResponse('Cliente já existe')
+            return render(request, 'clientes.html', {'nome': nome, 'sobrenome': sobrenome, 'email': email})
         
         # validação de email
         if not re.fullmatch(re.compile(r'([A-Za-Z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+'), email):
-            return HttpResponse('Email inválido!!!')
+            return render(request, {'nome': nome, 'sobrenome': sobrenome, 'cpf':cpf})
         
         
         #pegando os dados que gostaria de salvar no banco
