@@ -25,6 +25,11 @@ def clientes(request):
         if cliente.exists():
             return HttpResponse('Cliente já existe')
         
+        # validação de email
+        if not re.fullmatch(re.compile(r'([A-Za-Z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+'), email):
+            return HttpResponse('Email inválido!!!')
+        
+        
         #pegando os dados que gostaria de salvar no banco
         cliente = Clientes(
             nome = nome,
