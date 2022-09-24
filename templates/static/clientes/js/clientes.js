@@ -8,3 +8,20 @@ function add_carro(){
 
 
 } 
+
+function exibir_form(tipo){
+
+    add_cliente = document.getElementById('adicionar-cliente')
+    att_cliente = document.getElementById('att_cliente')
+
+    if (tipo == "1"){
+        add_cliente.style.display = "none"
+        att_cliente.style.display = "block"
+    }
+    else if (tipo == "2"){
+        add_cliente.style.display = "block"
+        att_client.style.display = "none"
+    }
+
+    
+}
