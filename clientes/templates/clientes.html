@@ -9,16 +9,16 @@
 <div class="container">
     <div class="row">
 
-        <div class="col-md card-dashboard">
+        <div onclick="exibir_form('1')" class="col-md card-dashboard">
             <p class="text-card">Adicionar clientes</p>
         </div>
 
-        <div class="col-md card-dashboard">
-            <p class="text-card">Atualizar cliente</p>
+        <div onclick="exibir_form('2')" class="col-md card-dashboard">
+            <p  class="text-card">Atualizar cliente</p>
         </div>
 
     </div>
-    <div class="adicionar-cliente">
+    <div id="adicionar-cliente" class="adicionar-cliente">
         <form action="{% url 'clientes' %}" method="POST"> {% csrf_token %}
             <div class="row">
                 <div class="col-md">
@@ -67,7 +67,10 @@
             <input type="submit" value="Cadastrar" class="btn-principal">
   
         </form>
-        
+    </div>
+
+    <div id="att_cliente">
+        <h3>  Teste</h3>
     </div>
 </div>
 
