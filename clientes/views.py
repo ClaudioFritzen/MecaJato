@@ -7,7 +7,8 @@ from .models import Clientes, Carro
 # Create your views here.
 def clientes(request):
     if request.method == "GET":
-        return render(request, 'clientes.html')
+        clientes_list = Clientes.objects.all()
+        return render(request, 'clientes.html', {'clientes': clientes_list})
 
     elif request.method == "POST":
         nome = request.POST.get('nome')
