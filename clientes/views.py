@@ -4,6 +4,7 @@ from django.http import HttpResponse, JsonResponse
 from .models import Clientes, Carro
 
 from django.core import serializers
+import json
 
 # Create your views here.
 def clientes(request):
@@ -61,6 +62,5 @@ def clientes(request):
 def att_cliente(request):
     id_cliente = request.POST.get('id_cliente')
     cliente = Clientes.objects.filter(id=id_cliente)
-    cliente_json = serializers.serialize('json', cliente)
-    print(cliente_json)
-    return JsonResponse({"test":1})
+    cliente_json = json.loads(serializers.serialize('json', cliente))[0]['fields']
+    return JsonResponse(cliente_json)
