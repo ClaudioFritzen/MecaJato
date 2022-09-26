@@ -1,6 +1,6 @@
 import re
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
 from .models import Clientes, Carro
 
@@ -55,3 +55,8 @@ def clientes(request):
             car.save()
             print(carro, placa, ano)
         return HttpResponse('Hello World!')
+
+
+def att_cliente(request):
+    print('test')
+    return JsonResponse({"test":1})
