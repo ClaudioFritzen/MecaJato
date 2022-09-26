@@ -1,8 +1,9 @@
 import re
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-
 from .models import Clientes, Carro
+
+from django.core import serializers
 
 # Create your views here.
 def clientes(request):
@@ -58,5 +59,8 @@ def clientes(request):
 
 
 def att_cliente(request):
-    print('test')
+    id_cliente = request.POST.get('id_cliente')
+    cliente = Clientes.objects.filter(id=id_cliente)
+    cliente_json = serializers.serialize('json', cliente)
+    print(cliente_json)
     return JsonResponse({"test":1})
