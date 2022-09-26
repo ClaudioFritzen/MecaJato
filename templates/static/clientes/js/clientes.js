@@ -14,14 +14,41 @@ function exibir_form(tipo){
     add_cliente = document.getElementById('adicionar-cliente')
     att_cliente = document.getElementById('att_cliente')
 
-    if (tipo == "1"){
+    if (tipo == '2'){
         add_cliente.style.display = "none"
         att_cliente.style.display = "block"
     }
-    else if (tipo == "2"){
+    else if (tipo == '1'){
         add_cliente.style.display = "block"
         att_client.style.display = "none"
     }
 
+}
+
+function dados_cliente() {
+    cliente = document.getElementById('cliente-select')
+
+    csrf_token = document.querySelector('[name=csrfmiddlewaretoken]').value
+    
+    
+    id_cliente = cliente.value
+
+    // simulação de formulario
+    data = new FormData()
+    data.append('id_cliente', id_cliente)
+    
+    
+    fetch("/clientes/atualiza_cliente/",{
+        method: "POST",
+        headers: {
+            'X-CSRFToken': csrf_token,
+        },
+        body: data
+    }).then(function(result) {
+        return result.json()
+        
+    }).then(function(data){
+        console.log(data)
+    })
     
 }

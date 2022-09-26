@@ -71,8 +71,8 @@
 
     <div id="att_cliente">
         <p></p>
-        {{clientes}}
-        <select name="" id="" class="form-control">
+        
+        <select name="" id="cliente-select" class="form-control" onchange="dados_cliente()">
             {% for cliente in clientes %}
                 <option value="{{cliente.id}}"> {{cliente.nome}} </option>
             {% endfor %}
