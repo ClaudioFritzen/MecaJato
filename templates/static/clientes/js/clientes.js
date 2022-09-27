@@ -48,6 +48,7 @@ function dados_cliente() {
         return result.json()
         
     }).then(function(data){
+        console.log(data)
         
         document.getElementById('form-att cliente').style.display = 'block'
 
