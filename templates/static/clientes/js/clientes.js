@@ -48,21 +48,20 @@ function dados_cliente() {
         return result.json()
         
     }).then(function(data){
-        console.log(data)
-        
+                
         document.getElementById('form-att cliente').style.display = 'block'
 
         nome = document.getElementById('nome')
-        nome.value = data['nome']
+        nome.value = data['clientes']['nome']
 
         sobrenome = document.getElementById('sobrenome')
-        sobrenome.value = data['sobrenome']
+        sobrenome.value = data['clientes']['sobrenome']
 
         email = document.getElementById('email')
-        email.value = data['email']
+        email.value = data['clientes']['email']
 
         cpf = document.getElementById('cpf')
-        cpf.value = data['cpf']
+        cpf.value = data['clientes']['cpf']
     })
     
 }

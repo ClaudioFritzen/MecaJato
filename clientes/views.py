@@ -70,6 +70,4 @@ def att_cliente(request):
 
     carros_json = [{'fields': carro ['fields'], 'id': carro['pk']} for carro in carros_json] 
     data = {'clientes': cliente_json, 'carros': carros_json}
-    print(carros_json)
-    print(data)
     return JsonResponse(data)
