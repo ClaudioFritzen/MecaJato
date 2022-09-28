@@ -27,10 +27,8 @@ function exibir_form(tipo){
 
 function dados_cliente() {
     cliente = document.getElementById('cliente-select')
-
+    
     csrf_token = document.querySelector('[name=csrfmiddlewaretoken]').value
-    
-    
     id_cliente = cliente.value
 
     // simulação de formulario
@@ -48,7 +46,7 @@ function dados_cliente() {
         return result.json()
         
     }).then(function(data){
-                
+               
         document.getElementById('form-att cliente').style.display = 'block'
 
         nome = document.getElementById('nome')
@@ -62,6 +60,14 @@ function dados_cliente() {
 
         cpf = document.getElementById('cpf')
         cpf.value = data['clientes']['cpf']
+
+        // trazendo os carros pro frontend
+        div_carros = document.getElementById('carros')
+        //div_carros.innerHTML = ""
+        for(i=0; i<data['carros'].length; i++){
+            console.log(data['carros'][i]['fields']['carros'])
+        }
+    
     })
     
 }
