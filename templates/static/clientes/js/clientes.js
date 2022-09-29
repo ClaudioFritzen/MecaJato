@@ -64,10 +64,23 @@ function dados_cliente() {
 
         // trazendo os carros pro frontend
         div_carros = document.getElementById('carros')
-        
+        div_carros.innerHTML=""
         for(i=0; i<data['carros'].length; i++){
-            console.log(data['carros'][i]['fields']['carros'])
-
+            console.log(data['carros'][i]) //['fields']['carros']
+            
+            div_carros.innerHTML += "<form action='' method=''>\
+                <div class='row'>\
+                    <div class='col-md'>\
+                        <input class='form-control' type='text' name='carro' value='" + data['carros'][i]['fields']['carros'] + "'>\
+                    </div>\
+                    <div class='col-md'>\
+                        <input class='form-control type='text' name='carro' value='" + data['carros'][i]['fields']['placas'] + "'>\
+                    </div>\
+                    <div class='col-md'>\
+                        <input class='form-control type='text' name='carro' value='" + data['carros'][i]['fields']['ano'] + "'>\
+                    </div>\
+                    \
+                </div><br>"         
         }
         
     
