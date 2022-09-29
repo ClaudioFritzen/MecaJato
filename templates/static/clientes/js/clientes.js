@@ -14,14 +14,14 @@ function exibir_form(tipo){
     add_cliente = document.getElementById('adicionar-cliente')
     att_cliente = document.getElementById('att_cliente')
 
-    if (tipo == '1'){
+    if(tipo == "1"){
         att_cliente.style.display = "none"
         add_cliente.style.display = "block"
         
     }
-    else if (tipo == '2'){
+    else if(tipo == "2"){
         add_cliente.style.display = "none"
-        att_client.style.display = "block"
+        att_cliente.style.display = "block"
     }
 
 }
@@ -64,23 +64,10 @@ function dados_cliente() {
 
         // trazendo os carros pro frontend
         div_carros = document.getElementById('carros')
-        div_carros.innerHTML = " "
+        
         for(i=0; i<data['carros'].length; i++){
             console.log(data['carros'][i]['fields']['carros'])
 
-            div_carros.innerHTML+="<form action='' method=''>\
-                <div class='row'>\
-                    <div='col-md'>\
-                        <input class='form-control' type='text' name='carro'>\
-                    </div>\
-                    <div='col-md'>\
-                        <input class='form-control' type='text' name='placa'>\
-                    </div>\
-                    <div='col-md'>\
-                        <input class='form-control' type='text' name='ano' placaholder='leu ate aqui'>\
-                    </div>\
-                </div>\
-            </form><br>"
         }
         
     
