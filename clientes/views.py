@@ -6,6 +6,8 @@ from .models import Clientes, Carro
 from django.core import serializers
 import json
 
+from django.views.decorators.csrf import csrf_exempt
+
 # Create your views here.
 def clientes(request):
     if request.method == "GET":
@@ -71,3 +73,17 @@ def att_cliente(request):
     carros_json = [{'fields': carro ['fields'], 'id': carro['pk']} for carro in carros_json] 
     data = {'clientes': cliente_json, 'carros': carros_json}
     return JsonResponse(data)
+
+@csrf_exempt
+def update_carro(request, id):
+    nome_carro = request.POST.get('carro')
+    placa = request.POST.get('placa')
+    ano = request.POST.get('ano')
+
+    carro = Carro.objects.get(id=id)
+    list_carros = Carro.objects.filter(placa=placa).exclude(id=id)
+    print(list_carros)
+    print(carro)
+    if list_carros.exists():
+        return HttpResponse('Placa já existe')
+    return HttpResponse('Hello World! \n Dados alterados com sucesso')

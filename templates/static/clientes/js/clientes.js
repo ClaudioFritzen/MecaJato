@@ -66,19 +66,24 @@ function dados_cliente() {
         div_carros = document.getElementById('carros')
         div_carros.innerHTML=""
         for(i=0; i<data['carros'].length; i++){
-            console.log(data['carros'][i]) //['fields']['carros']
+            console.log(data['carros'][i]['fields']['carros']) //['fields']['carros']
             
-            div_carros.innerHTML += "<form action='' method=''>\
+            div_carros.innerHTML += "<form action='/clientes/update_carro/''+ data['carros'][i]['id']+' method='POST'>\
                 <div class='row'>\
+                    \
                     <div class='col-md'>\
-                        <input class='form-control' type='text' name='carro' value='" + data['carros'][i]['fields']['carros'] + "'>\
+                        <input class='form-control type='text' name='carros' value='" + data['carros'][i]['fields']['carros'] + "'>\
                     </div>\
                     <div class='col-md'>\
-                        <input class='form-control type='text' name='carro' value='" + data['carros'][i]['fields']['placas'] + "'>\
+                        <input class='form-control type='text' name='placa' value='" + data['carros'][i]['fields']['placas'] + "'>\
                     </div>\
                     <div class='col-md'>\
-                        <input class='form-control type='text' name='carro' value='" + data['carros'][i]['fields']['ano'] + "'>\
+                        <input class='form-control type='text' name='ano' value='" + data['carros'][i]['fields']['ano'] + "'>\
                     </div>\
+                    <div class='col-md'>\
+                            <input class='btn btn-lg btn-success' type='submit'>\
+                        </div>\
+                </form>\
                     \
                 </div><br>"         
         }
